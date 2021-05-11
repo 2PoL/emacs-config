@@ -9,7 +9,7 @@
 
 (setq display-line-numbers-type t)
 
-(load-theme 'doom-moonlight t)
+(load-theme 'doom-one-light t)
 
 ;;setup doom-banner
 (setq fancy-splash-image "~/.doom.d/banner/Amadeus.png")
