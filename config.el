@@ -25,4 +25,5 @@
 
   (setq-default fill-column 120
                 delete-trailing-lines t)
+
   )
