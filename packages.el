@@ -61,3 +61,4 @@
 (package! lsp-python-ms)
 (package! eglot)
 (package! company-lsp)
+(package! evil-matchit)

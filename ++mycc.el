@@ -13,21 +13,6 @@
                  (arglist-cont-nonempty . +)))))
   (setq c-default-style "my-cc"))
 
-;; clangd with lsp
-;; (setq lsp-clients-clangd-args '("-j=3"
-;;                                 "--background-index"
-;;                                 "--clang-tidy"
-;;                                 "--completion-style=detailed"
-;;                                 "--header-insertion=never"))
-;; (after! lsp-clangd (set-lsp-priority! 'clangd 2))
-
-;; (use-package! company-lsp
-;;   :defer 5
-;;   :config
-;;   (push 'company-lsp company-backends))
-;; (add-hook! 'c-mode-hook #'lsp)
-;; (add-hook! 'c++-mode-hook #'lsp)
-
 ;; clangd with eglot
 (use-package! eglot
   :defer 5
@@ -37,30 +22,46 @@
   (add-hook 'c-mode-hook 'eglot-ensure)
   )
 
-
-
-(setq +format-with-lsp nil)
-(after! lsp-mode
-  (setq lsp-print-io nil
-        lsp-file-watch-threshold 3000)
-  (dolist (dir '("[/\\\\]\\.ccls-cache$"
-                 "[/\\\\]\\.mypy_cache$"
-                 "[/\\\\]\\.pytest_cache$"
-                 "[/\\\\]\\.cache$"
-                 "[/\\\\]\\.clwb$"
-                 "[/\\\\]_build$"
-                 "[/\\\\]__pycache__$"
-                 "[/\\\\]bazel-bin$"
-                 "[/\\\\]bazel-code$"
-                 "[/\\\\]bazel-genfiles$"
-                 "[/\\\\]bazel-out$"
-                 "[/\\\\]bazel-testlogs$"
-                 "[/\\\\]third_party$"
-                 "[/\\\\]third-party$"
-                 ))
-
-    (push dir lsp-file-watch-ignored))
+;; evil match it
+(use-package! evil-matchit
+  :defer 5
+  :config
+  (setq evilmi-shortcut "m"
+        evilmi-quote-chars (string-to-list "'\"/"))
+  (global-evil-matchit-mode 1)
   )
+
+;; clangd with lsp
+;; (setq lsp-clients-clangd-args '("-j=3"
+;;                                 "--background-index"
+;;                                 "--clang-tidy"
+;;                                 "--completion-style=detailed"
+;;                                 "--header-insertion=never"))
+;; (after! lsp-clangd (set-lsp-priority! 'clangd 2))
+
+;; (setq +format-with-lsp nil)
+
+;; (after! lsp-mode
+;;   (setq lsp-print-io nil
+;;         lsp-file-watch-threshold 3000)
+;;   (dolist (dir '("[/\\\\]\\.ccls-cache$"
+;;                  "[/\\\\]\\.mypy_cache$"
+;;                  "[/\\\\]\\.pytest_cache$"
+;;                  "[/\\\\]\\.cache$"
+;;                  "[/\\\\]\\.clwb$"
+;;                  "[/\\\\]_build$"
+;;                  "[/\\\\]__pycache__$"
+;;                  "[/\\\\]bazel-bin$"
+;;                  "[/\\\\]bazel-code$"
+;;                  "[/\\\\]bazel-genfiles$"
+;;                  "[/\\\\]bazel-out$"
+;;                  "[/\\\\]bazel-testlogs$"
+;;                  "[/\\\\]third_party$"
+;;                  "[/\\\\]third-party$"
+;;                  ))
+
+;;     (push dir lsp-file-watch-ignored))
+;;   )
 
 ;; (after! lsp-ui
 ;;   (setq lsp-ui-sideline-enable nil

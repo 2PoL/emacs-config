@@ -45,19 +45,27 @@
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project
         doom-modeline-major-mode-icon t
         ;; My mac vsplit screen won't fit
-        doom-modeline-window-width-limit 20))
+        doom-modeline-window-width-limit (- fill-column 10)))
 
+;;Always create a new workspace for the project
 (setq +workspaces-on-switch-project-behavior t)
 
 (custom-theme-set-faces! doom-theme
   `(font-lock-comment-face :foreground ,(doom-color 'blue))
   `(font-lock-doc-face :foreground ,(doom-color 'blue)))
 
-(when IS-MAC
-  ;; enable ligatures support
-  ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-  (ignore-errors
-    (mac-auto-operator-composition-mode)))
+(custom-set-faces!
+  '(ivy-posframe :foreground "#141ee0":background "#cbddf2")
+  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
+  `(mode-line :background ,(doom-blend 'blue 'base0  0.2))
+  `(mode-line-inactive :background ,(doom-color 'bg-alt))
+  )
+
+(setq ivy-posframe-parameters
+      '((left-fringe . 8)
+        (right-fringe . 8)))
+
+;; (custom-set-faces '(ivy-posframe ((t (:foreground "#141ee0":background "#cbddf2")))))
 
 ;;nyan-cat
 (use-package! nyan-mode
@@ -65,8 +73,8 @@
   :config
   (nyan-mode t)
   :init
-  (setq nyan-animate-nyancat t)
-  (setq nyan-wavy-trail t)
+  (setq nyan-animate-nyancat t
+        nyan-wavy-trail t)
   )
 
 
@@ -88,8 +96,6 @@
 
 (use-package! all-the-icons-ibuffer
   :after ibuffer
-  :init (all-the-icons-ibuffer-mode 1)
+  :init
+  (all-the-icons-ibuffer-mode 1)
   )
-
-(add-hook! 'rainbow-mode-hook
-  (hl-line-mode (if rainbow-mode -1 +1)))

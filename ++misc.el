@@ -7,11 +7,6 @@
 (setq org-directory "~/Dropbox/Org")
 
 ;;format-all
-(setq +format-on-save-enabled-modes
-      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-            sql-mode         ; sqlformat is currently broken
-            tex-mode         ; latexindent is broken
-            latex-mode))
 (map! :n "<f4>" 'format-all-buffer)
 
 ;;expand-region
@@ -43,12 +38,13 @@
 ;;Magit forge
 (setq auth-sources '("~/.authinfo"))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; TRASH
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;; Use minibuffer to display some ivy functions
+(setq ivy-posframe-display-functions-alist
+      '((swiper          . ivy-posframe-display-at-frame-center)
+        (describe-variable . ivy-display-function-fallback)
+        (describe-function . ivy-display-function-fallback)
+        (counsel-M-x     . ivy-display-function-fallback)
+        (t               .ivy-posframe-display)))
+(ivy-posframe-mode 1)
 ;; delete to trash
 (setq delete-by-moving-to-trash t)
-
-(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=yes")
