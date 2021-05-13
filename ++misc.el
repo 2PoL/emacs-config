@@ -39,12 +39,39 @@
 (setq auth-sources '("~/.authinfo"))
 
 ;; Use minibuffer to display some ivy functions
-(setq ivy-posframe-display-functions-alist
-      '((swiper          . ivy-posframe-display-at-frame-center)
-        (describe-variable . ivy-display-function-fallback)
-        (describe-function . ivy-display-function-fallback)
-        (counsel-M-x     . ivy-display-function-fallback)
-        (t               .ivy-posframe-display)))
-(ivy-posframe-mode 1)
+;; Different command can use different display function.
+(after! ivy-posframe
+  (setq ivy-posframe-height-alist '((swiper . 20)
+                                    (counsel-M-x . 10)
+                                    (t      . 25)))
+  (setq ivy-posframe-display-functions-alist
+        '((swiper          . ivy-display-function-fallback)
+          (describe-variable . ivy-display-function-fallback)
+          (counsel-M-x     . ivy-display-function-fallback)
+          (t               . ivy-posframe-display))
+        )
+  )
+(after! ivy-rich
+  (plist-put! ivy-rich-display-transformers-list
+              'ivy-switch-buffer
+              '(:columns
+                ((ivy-switch-buffer-transformer (:width 60))
+                 (ivy-rich-switch-buffer-size (:width 7))
+                 (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
+                 (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
+                 (ivy-rich-switch-buffer-project (:width 15 :face success))
+                 (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+                :predicate
+                (lambda (cand) (get-buffer cand)))))
+
 ;; delete to trash
 (setq delete-by-moving-to-trash t)
+
+;;projectile
+(after! projectile
+  (setq compilation-read-command nil)   ; no prompt in projectile-compile-project
+  ;; . -> Build
+  (projectile-register-project-type 'cmake '("CMakeLists.txt")
+                                    :configure "cmake %s"
+                                    :compile "cmake --build Debug"
+                                    :test "ctest")

@@ -3,10 +3,6 @@
 (setq initial-frame-alist
       '((top . 200) (left . 600) (width . 120) (height . 46)))
 
-;; (desktop-save-mode 1)
-;; (setq desktop-dir "~/Dropbox/doc/")
-;; (desktop-read desktop-dir)
-
 (setq display-line-numbers-type t)
 
 (load-theme 'doom-one-light t)
@@ -40,6 +36,7 @@
   (+my/better-font))
 
 (setq evil-emacs-state-cursor `(box ,(doom-color 'violet)))
+(setq evil-normal-state-cursor `(box ,"#ef4136"))
 
 (after! doom-modeline
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project
@@ -61,9 +58,6 @@
   `(mode-line-inactive :background ,(doom-color 'bg-alt))
   )
 
-(setq ivy-posframe-parameters
-      '((left-fringe . 8)
-        (right-fringe . 8)))
 
 ;; (custom-set-faces '(ivy-posframe ((t (:foreground "#141ee0":background "#cbddf2")))))
 
