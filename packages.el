@@ -54,7 +54,7 @@
 (package! all-the-icons-dired)
 (package! all-the-icons)
 (package! benchmark-init)
-(package! expand-region)
+(package! expand-region :disable t)
 (package! exec-path-from-shell)
 (package! osx-clipboard)
 (package! lsp-ui :disable t)

@@ -91,5 +91,4 @@
 (use-package! all-the-icons-ibuffer
   :after ibuffer
   :init
-  (all-the-icons-ibuffer-mode 1)
-  )
+  (all-the-icons-ibuffer-mode 1))

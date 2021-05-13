@@ -10,12 +10,12 @@
 (map! :n "<f4>" 'format-all-buffer)
 
 ;;expand-region
-(use-package! expand-region
-  :defer 5
-  :config
-  (pending-delete-mode t)
-  :bind
-  ("M-2" . 'er/expand-region))
+;; (use-package! expand-region
+;;   :defer 5
+;;   :config
+;;   (pending-delete-mode t)
+;;   :bind
+;;   ("M-2" . 'er/expand-region))
 
 (set-language-environment "UTF-8")
 
@@ -74,4 +74,4 @@
   (projectile-register-project-type 'cmake '("CMakeLists.txt")
                                     :configure "cmake %s"
                                     :compile "cmake --build Debug"
-                                    :test "ctest")
+                                    :test "ctest"))
