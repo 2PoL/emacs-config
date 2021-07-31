@@ -13,13 +13,19 @@
                  (arglist-cont-nonempty . +)))))
   (setq c-default-style "my-cc"))
 
-;; clangd with eglot
+;; (defun close-fucking-eldoc ()
+;;   (setq! global-eldoc-mode -1)
+;;   )
+;; ;; clangd with eglot
 ;; (use-package! eglot
 ;;   :defer 5
 ;;   :config
+;;   (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 ;;   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
 ;;   (add-hook 'c++-mode-hook 'eglot-ensure)
+;;   (add-hook 'c++-mode-hook 'close-fucking-eldoc)
 ;;   (add-hook 'c-mode-hook 'eglot-ensure)
+;;   (add-hook 'c-mode-hook 'close-fucking-eldoc)
 ;;   )
 
 ;; evil match it

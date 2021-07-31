@@ -23,7 +23,7 @@
         (dolist (charset '(kana han symbol cjk-misc bopomofo))
           (set-fontset-font (frame-parameter nil 'font)
                             charset
-                            (font-spec :family "Source Han Serif")))) ;; 14 16 20 22 28
+                            (font-spec :family "wqy-microhei")))) ;; 14 16 20 22 28
     ))
 
 (defun +my|init-font(frame)

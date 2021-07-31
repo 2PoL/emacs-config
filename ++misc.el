@@ -67,6 +67,7 @@
 ;; delete to trash
 (setq delete-by-moving-to-trash t)
 
+
 ;;projectile
 (after! projectile
   (setq compilation-read-command nil)   ; no prompt in projectile-compile-project
