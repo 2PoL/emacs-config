@@ -1,7 +1,7 @@
 ;;; ++ui.el -*- lexical-binding: t; -*-
 
 (setq initial-frame-alist
-      '((top . 200) (left . 600) (width . 120) (height . 46)))
+      '((top . 0) (left . 0) (width . 158) (height . 44)))
 
 (setq display-line-numbers-type t)
 
