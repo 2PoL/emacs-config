@@ -5,7 +5,21 @@
 
 (setq display-line-numbers-type t)
 
-(load-theme 'doom-one-light t)
+;; doom-one-light theme
+;; (load-theme 'doom-one-light t)
+
+;; (custom-theme-set-faces! doom-theme
+;;   `(font-lock-comment-face :foreground ,(doom-color 'blue))
+;;   `(font-lock-doc-face :foreground ,(doom-color 'blue)))
+
+;; (custom-set-faces!
+;;   '(ivy-posframe :foreground "#141ee0":background "#cbddf2")
+;;   `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
+;;   `(mode-line :background ,(doom-blend 'blue 'base0  0.2))
+;;   `(mode-line-inactive :background ,(doom-color 'bg-alt))
+;;   )
+
+(load-theme 'doom-dracula t)
 
 ;;setup doom-banner
 (setq fancy-splash-image "~/.doom.d/banner/Amadeus.png")
@@ -46,17 +60,6 @@
 
 ;;Always create a new workspace for the project
 (setq +workspaces-on-switch-project-behavior t)
-
-(custom-theme-set-faces! doom-theme
-  `(font-lock-comment-face :foreground ,(doom-color 'blue))
-  `(font-lock-doc-face :foreground ,(doom-color 'blue)))
-
-(custom-set-faces!
-  '(ivy-posframe :foreground "#141ee0":background "#cbddf2")
-  `(doom-modeline-debug-visual :background ,(doom-blend 'red 'base0 0.3))
-  `(mode-line :background ,(doom-blend 'blue 'base0  0.2))
-  `(mode-line-inactive :background ,(doom-color 'bg-alt))
-  )
 
 
 ;; (custom-set-faces '(ivy-posframe ((t (:foreground "#141ee0":background "#cbddf2")))))
